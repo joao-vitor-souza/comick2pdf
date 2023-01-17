@@ -1,41 +1,60 @@
 ## How to use it
 
-`comick2pdf` is a Python script that converts images downloaded from [comick.app](https://comick.app/home) into a PDF version of your desired manga. Supposing that you have Python downloaded on your machine, you'll need to install `Pillow` package before running this tool, to do this just open a terminal window and type:
+`comick2pdf` is a tool to download PDF versions of your desired mangas from [comick.app](https://comick.app/home). Setting up this tool is pretty easy. Supposing that you have Python downloaded on your machine, open a terminal window and type:
 
 ```bash
-pip install Pillow
+pip install Pillow, requests
 ```
 
-After that, [download](https://github.com/joao-vitor-souza/comick2pdf/archive/refs/heads/main.zip) the script or clone this repository with:
+After that, [download](https://github.com/joao-vitor-souza/comick2pdf/archive/refs/heads/main.zip) or clone this repository with:
 
 ```bash
 git clone https://github.com/joao-vitor-souza/comick2pdf
 ```
 
-Still on your terminal, move to the folder where you just downloaded/cloned the script. You can use `cd` command for that. Now, inside the folder, enter:
+Open the file called `env_paths.py` and fill the 2 variables:
 
-```bash
-python comick2pdf.py path/to/images
+```python
+# Where the files you're going to download from the WEB will be stored.
+DOWNLOAD_PATH = ""
+# Where the PDF file will be stored.
+OUTPUT_PATH = ""
+
+
+"""
+Example:
+
+DOWNLOAD_PATH = "/home/joao/Downloads/"
+OUTPUT_PATH = "/home/joao/Mangas/"
+"""
 ```
 
-Replace `path/to/images` with the path where the manga images are located; and there you go, a manga in PDF has been created inside the folder `pdf`.
+Now, still on your terminal, move to the folder where you just downloaded/cloned the repository. You can use `cd` command for that. Inside the folder, enter:
+
+```bash
+python comick2pdf.py https://comick.app/comic/your-desised-manga pdf_name
+```
+
+Replace `https://comick.app/comic/your-desised-manga` with the URL of the manga you want. You can also give a name to the PDF file by replacing `pdf_name`, if no name is passed, then a default name is used. After that, a window on your browser will be opened and it'll download the manga images, you must place them in the same path as in the `DOWNLOAD_PATH`. After that, the script will take care of unzipping the images, building the PDF, moving it to the `OUTPUT_PATH` and cleaning temporary files.
 
 ## Example
 
-Let's say you want a PDF version of [Chainsaw Man Chapter 1](https://comick.app/comic/chainsaw-man-digital-colored-comics?lang=en). First, download the manga images by clicking in the button inside the red circle:
+Let's say you want a PDF version of [Chainsaw Man Chapter 1](https://comick.app/comic/chainsaw-man-digital-colored-comics/6pk0z-chapter-1-en). First, you'll need to define the paths, in my case, they are:
 
-![download](https://user-images.githubusercontent.com/90481938/212583211-3ae7b4c3-59ef-459d-ba77-885cb1d671c6.png)
+```python
+DOWNLOAD_PATH = "/home/joao/Downloads/"
+OUTPUT_PATH = "/home/joao/Manga/"
+```
 
-I downloaded the images and unziped them to `/home/joao/Downloads/chainsaw-man-digital-colored-comics-1/`. Now, in the terminal, open the directory of the folder where the script is located and run:
+Now, open your terminal in the repository folder and type:
 
-![convertion](https://user-images.githubusercontent.com/90481938/212584302-70317f13-c02f-4196-9c01-b3566f6eb1cf.png)
+```bash
+python comick2pdf.py https://comick.app/comic/chainsaw-man-digital-colored-comics/6pk0z-chapter-1-en CSM-Chapter-1
+```
+![convertion](https://user-images.githubusercontent.com/90481938/213005542-ff28783f-6308-4896-a591-a3f36ed216d9.png)
 
-That's it! If I go where the images are, there'll be a folder called `pdf`:
+You'll be prompted with a download tab asking where you want to download the images, in my case, I'm going to download them to `"/home/joao/Downloads/"`.
 
-![pdf-folder](https://user-images.githubusercontent.com/90481938/212585081-dae1c2ea-a128-4ac1-98fe-1314c7f76872.png)
+After some seconds the PDF will be created at `"/home/joao/Manga/"`:
 
-And inside it, it's the PDF of the manga itself:
-
-![pdf](https://user-images.githubusercontent.com/90481938/212585278-84ae5993-bcef-40d4-b751-13628adf30a5.png)
-
-Now, you can delete the images if you want to, they won't be useful anymore.
+![pdf](https://user-images.githubusercontent.com/90481938/213005485-51991190-aeb6-4634-ac60-b6b32db1f8ba.png)
