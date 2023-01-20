@@ -32,10 +32,10 @@ OUTPUT_PATH = "/home/joao/Mangas/"
 Now, still on your terminal, move to the folder where you just downloaded/cloned the repository. You can use `cd` command for that. Inside the folder, enter:
 
 ```bash
-python comick2pdf.py https://comick.app/comic/your-desised-manga pdf_name
+python comick2pdf.py https://comick.app/comic/your-desired-manga pdf_name
 ```
 
-Replace `https://comick.app/comic/your-desised-manga` with the URL of the manga you want. You can also give a name to the PDF file by replacing `pdf_name`, if no name is passed, then a default name is used. After that, a window on your browser will be opened and it'll download the manga images, you must place them in the same path as in the `DOWNLOAD_PATH`. After that, the script will take care of unzipping the images, building the PDF, moving it to the `OUTPUT_PATH` and cleaning temporary files.
+Replace `https://comick.app/comic/your-desired-manga` with the URL of the manga you want. You can also give a name to the PDF file by replacing `pdf_name`; if no name is passed, then a default name is used. After that, a window in your browser will be opened and it'll download the manga images; you must place them in the same path as in the `DOWNLOAD_PATH`. After that, the script will take care of unzipping the images, building the PDF, moving it to the `OUTPUT_PATH`, and cleaning temporary files.
 
 ## Example
 
@@ -43,7 +43,7 @@ Let's say you want a PDF version of [Chainsaw Man Chapter 1](https://comick.app/
 
 ```python
 DOWNLOAD_PATH = "/home/joao/Downloads/"
-OUTPUT_PATH = "/home/joao/Manga/"
+OUTPUT_PATH = "/home/joao/Mangas/"
 ```
 
 Now, open your terminal in the repository folder and type:
@@ -53,8 +53,8 @@ python comick2pdf.py https://comick.app/comic/chainsaw-man-digital-colored-comic
 ```
 ![convertion](https://user-images.githubusercontent.com/90481938/213005542-ff28783f-6308-4896-a591-a3f36ed216d9.png)
 
-You'll be prompted with a download tab asking where you want to download the images, in my case, I'm going to download them to `"/home/joao/Downloads/"`.
+You'll be prompted with a download tab asking where you want to download the images; in my case, I'm going to download them to `"/home/joao/Downloads/"`.
 
-After some seconds the PDF will be created at `"/home/joao/Manga/"`:
+After some seconds the PDF will be created at `"/home/joao/Mangas/"`:
 
 ![pdf](https://user-images.githubusercontent.com/90481938/213005485-51991190-aeb6-4634-ac60-b6b32db1f8ba.png)
