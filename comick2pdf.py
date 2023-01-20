@@ -47,7 +47,14 @@ try:
 
     def get_folder_name(url: str) -> str:
         comic_name = url.split("/")[-2]
-        comic_chapter = url.split("/")[-1].split("-")[-2]
+        i = -2
+        while True:
+            try:
+                comic_chapter = int(url.split("/")[-1].split("-")[i])
+            except ValueError:
+                i -= 1
+            else:
+                break
         return f"{comic_name}-{comic_chapter}"
 
     folder_name = get_folder_name(comic_url)
@@ -65,9 +72,6 @@ try:
     print(C.g + "\n\nDownload Completed!" + C.e)
 
     with zipfile.ZipFile(f"{DOWNLOAD_PATH}{folder_name}.zip", "r") as zip_ref:
-        print(C.b + "\nUnzipping images..." + C.e)
-        if not os.path.exists(DOWNLOAD_PATH + folder_name):
-            os.mkdir(DOWNLOAD_PATH + folder_name)
         zip_ref.extractall(DOWNLOAD_PATH + folder_name)
 
     print(C.b + "\nBuilding PDF file..." + C.e)
@@ -89,13 +93,10 @@ try:
 except KeyboardInterrupt:
     print(C.y + "\nInterruption Detected! Program Closed!" + C.e)
 else:
-    print(C.g + "\nConvertion Completed! The PDF is stored at: " + C.e + OUTPUT_PATH)
+    print(f"{C.g}\nConvertion Completed! The PDF is stored at:{C.e} {OUTPUT_PATH}\n")
 finally:
     try:
         shutil.rmtree(DOWNLOAD_PATH + folder_name, ignore_errors=True)
         os.remove(f"{DOWNLOAD_PATH}{folder_name}.zip")
-        print(C.g + "\nTemporary files cleaned!" + C.e)
     except (NameError, KeyboardInterrupt, FileNotFoundError):
         pass
-    else:
-        print(C.g + "\nAll Done!\n" + C.e)
