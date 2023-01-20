@@ -51,7 +51,7 @@ Now, open your terminal in the repository folder and type:
 ```bash
 python comick2pdf.py https://comick.app/comic/chainsaw-man-digital-colored-comics/6pk0z-chapter-1-en CSM-Chapter-1
 ```
-![convertion](https://user-images.githubusercontent.com/90481938/213005542-ff28783f-6308-4896-a591-a3f36ed216d9.png)
+![convertion](https://user-images.githubusercontent.com/90481938/213820563-2085bb73-31b9-4f04-bdbe-de5fb68e91ca.png)
 
 You'll be prompted with a download tab asking where you want to download the images; in my case, I'm going to download them to `"/home/joao/Downloads/"`.
 
