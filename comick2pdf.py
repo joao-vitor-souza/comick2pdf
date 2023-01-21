@@ -16,7 +16,13 @@ try:
         b = "\033[94m"
         y = "\033[93m"
         g = "\033[92m"
+        r = "\033[91m"
         e = "\033[0m"
+
+    for path in (DOWNLOAD_PATH, OUTPUT_PATH):
+        if not os.path.exists(path):
+            print(f"\n{C.r}The following path doesn't exist:{C.e} {path}\n")
+            sys.exit(1)
 
     try:
         comic_url = sys.argv[1].strip()
@@ -28,17 +34,17 @@ try:
         if not r:
             raise requests.exceptions.ConnectionError
     except IndexError:
-        print(C.y + "No URL was passed!" + C.e)
+        print(C.r + "No URL was passed!" + C.e)
         sys.exit(1)
     except requests.exceptions.ConnectionError:
         print(
-            C.y
+            C.r
             + "It was not possible to connect to the API!\nVerify your connection or the URL!"
             + C.e
         )
         sys.exit(1)
     except requests.exceptions.InvalidURL:
-        print(C.y + "Invalid URL!" + C.e)
+        print(C.r + "Invalid URL!" + C.e)
         sys.exit(1)
 
     def get_api_url(url: str) -> str:
@@ -91,7 +97,8 @@ try:
     cover.save(f"{OUTPUT_PATH}{file_name}.pdf", save_all=True, append_images=image_list)
 
 except KeyboardInterrupt:
-    print(C.y + "\nInterruption Detected! Program Closed!" + C.e)
+    print(C.y + "\n\nInterruption Detected! Program Closed!" + C.e)
+    sys.exit(0)
 else:
     print(f"{C.g}\nConvertion Completed! The PDF is stored at:{C.e} {OUTPUT_PATH}\n")
 finally:
