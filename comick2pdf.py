@@ -98,7 +98,6 @@ try:
 
 except KeyboardInterrupt:
     print(C.y + "\n\nInterruption Detected! Program Closed!" + C.e)
-    sys.exit(0)
 else:
     print(f"{C.g}\nConvertion Completed! The PDF is stored at:{C.e} {OUTPUT_PATH}\n")
 finally:
