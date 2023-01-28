@@ -68,7 +68,6 @@ try:
 
     print(C.b + "\nConnecting to the API...\n" + C.e)
     webbrowser.open(api_url)
-    sleep(10)
 
     print("\n")
     while not os.path.exists(f"{DOWNLOAD_PATH}{folder_name}.zip"):
