@@ -56,7 +56,8 @@ try:
         i = -2
         while True:
             try:
-                comic_chapter = int(url.split("/")[-1].split("-")[i])
+                comic_chapter = url.split("/")[-1].split("-")[i]
+                float(comic_chapter)
             except ValueError:
                 i -= 1
             else:
@@ -69,7 +70,6 @@ try:
     print(C.b + "\nConnecting to the API...\n" + C.e)
     webbrowser.open(api_url)
 
-    print("\n")
     while not os.path.exists(f"{DOWNLOAD_PATH}{folder_name}.zip"):
         print(C.y + "Waiting the download to finish...\r", end="")
         sleep(1)
